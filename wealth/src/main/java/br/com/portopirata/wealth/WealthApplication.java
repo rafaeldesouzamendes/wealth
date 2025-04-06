@@ -1,4 +1,4 @@
-package br.com.portopirata;
+package br.com.portopirata.wealth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
