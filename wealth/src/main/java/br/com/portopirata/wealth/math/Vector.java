@@ -16,12 +16,6 @@ public class Vector<T extends BigDecimal>
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Vector( Class<T> clazz, int size )
-	{
-		this.vector = (T[]) newInstance(clazz, size);
-	}
-
-	@SuppressWarnings("unchecked")
 	public Vector( Class<T> clazz, int size, T identity )
 	{
 		this.vector = (T[]) newInstance(clazz, size);

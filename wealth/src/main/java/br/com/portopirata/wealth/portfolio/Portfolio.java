@@ -24,8 +24,8 @@ public class Portfolio {
 	{
 		this.numberOfAssets = portfolio.size();
 		this.amounts = new Vector<>( portfolio.values().toArray( new BigDecimal[numberOfAssets]) );
-		this.valueOfPortfolioInAsset = new Vector<>(BigDecimal.class, numberOfAssets);
-		this.weightsOfAssetsInPortfolio = new Vector<>(BigDecimal.class, numberOfAssets);
+		this.valueOfPortfolioInAsset = new Vector<>( BigDecimal.class, numberOfAssets, BigDecimal.ZERO );
+		this.weightsOfAssetsInPortfolio = new Vector<>( BigDecimal.class, numberOfAssets, BigDecimal.ZERO );
 		processPortfolio( portfolio );
 	}
 	

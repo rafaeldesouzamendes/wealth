@@ -86,6 +86,9 @@ public class Matrix<T extends BigDecimal>
 		}
 	}
 
+	public T get(int i, int j) {
+		return this.matrix[i][j];
+	}
 
 	public interface TriConsumer<T1, T2, T3>
 	{
@@ -102,7 +105,4 @@ public class Matrix<T extends BigDecimal>
 		R apply( T1 t1, T2 t2, T3 t3, T4 t4 );
 	}
 
-	public T get(int i, int j) {
-		return this.matrix[i][j];
-	}
 }
