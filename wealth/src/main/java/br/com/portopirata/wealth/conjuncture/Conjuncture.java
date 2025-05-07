@@ -50,7 +50,7 @@ public class Conjuncture {
 			computeLiquidityIndex();
 		}
 
-		private void computeWealthIndexes() 
+		void computeWealthIndexes() 
 		{
 			this.cambialDirectWealthIndex = portfolio.getValueOfPortfolioInAsset().sumAll( vi -> vi.pow( 2 ) );
 			
@@ -63,14 +63,14 @@ public class Conjuncture {
 			this.cambialRelactiveWealthIndex = portfolio.getValueOfPortfolioInAsset().sumAll( squareNeperialLogByGeometricAverage );
 		}
 		
-		private void computeDiversificationAndRedundancies() 
+		void computeDiversificationAndRedundancies() 
 		{
 			Matrix<BigDecimal> correlations = marketScenario.getCorrelations();
 			computeDiversificationIndex(correlations);
 			computeRedundanciesIndexes(correlations);
 		}
 		
-		private void computeLiquidityIndex() 
+		void computeLiquidityIndex() 
 		{
 			int lenght = portfolio.getNumberOfAssets();
 			Matrix<BigDecimal> liquidities = new Matrix<BigDecimal>(BigDecimal.class, lenght, BigDecimal.ZERO);
