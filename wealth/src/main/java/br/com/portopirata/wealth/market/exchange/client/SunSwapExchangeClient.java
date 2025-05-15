@@ -1,4 +1,4 @@
-package br.com.portopirata.wealth.market.exchange.adapter;
+package br.com.portopirata.wealth.market.exchange.client;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -15,12 +15,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class SunSwapExchangeAdapter implements IExchangeAdapter 
+public class SunSwapExchangeClient implements IExchangeClient 
 {
     private final HttpClient httpClient;
 	private final ObjectMapper mapper;
 
-	public SunSwapExchangeAdapter( ObjectMapper mapper, HttpClient httpClient ) 
+	public SunSwapExchangeClient( ObjectMapper mapper, HttpClient httpClient ) 
 	{
         this.httpClient = httpClient;
 		this.mapper = mapper;

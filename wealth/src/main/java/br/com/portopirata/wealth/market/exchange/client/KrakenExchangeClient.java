@@ -1,4 +1,4 @@
-package br.com.portopirata.wealth.market.exchange.adapter;
+package br.com.portopirata.wealth.market.exchange.client;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -14,12 +14,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class BinanceExchangeAdapter implements IExchangeAdapter 
+public class KrakenExchangeClient implements IExchangeClient 
 {
     private final HttpClient httpClient;
 	private final ObjectMapper mapper;
 
-	public BinanceExchangeAdapter( ObjectMapper mapper, HttpClient httpClient ) 
+	public KrakenExchangeClient( ObjectMapper mapper, HttpClient httpClient ) 
 	{
         this.httpClient = httpClient;
 		this.mapper = mapper;
@@ -29,15 +29,17 @@ public class BinanceExchangeAdapter implements IExchangeAdapter
 	public BigDecimal getPrice(String symbol)
 	{
 		try {
-			String url = "https://api.binance.com/api/v3/ticker/price?symbol=" + symbol;
-			HttpRequest request = HttpRequest.newBuilder()
+			String url = "https://api.kraken.com/0/public/Ticker?pair=" + symbol;
+	        HttpRequest request = HttpRequest.newBuilder()
 	                .uri(new URI(url))
 	                .GET()
 	                .build();
 
 	        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 	        JsonNode rootNode = mapper.readTree(response.body());
-			return new BigDecimal( rootNode.get("price").asText() );
+	        JsonNode resultNode = rootNode.get("result");
+	        String resultKey = resultNode.fieldNames().next();
+	        return new BigDecimal(resultNode.get(resultKey).get("c").get(0).asText() );
 		} catch (IOException | URISyntaxException | InterruptedException e) {
 			throw new RuntimeException(e);
 		}

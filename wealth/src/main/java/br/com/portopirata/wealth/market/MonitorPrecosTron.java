@@ -5,9 +5,9 @@ import java.net.http.HttpClient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.portopirata.wealth.market.exchange.adapter.BinanceExchangeAdapter;
-import br.com.portopirata.wealth.market.exchange.adapter.KrakenExchangeAdapter;
-import br.com.portopirata.wealth.market.exchange.adapter.SunSwapExchangeAdapter;
+import br.com.portopirata.wealth.market.exchange.client.BinanceExchangeClient;
+import br.com.portopirata.wealth.market.exchange.client.KrakenExchangeClient;
+import br.com.portopirata.wealth.market.exchange.client.SunSwapExchangeClient;
 
 public class MonitorPrecosTron {
 
@@ -17,9 +17,9 @@ public class MonitorPrecosTron {
 
     public static void main(String[] args) throws Exception 
     {
-    	BinanceExchangeAdapter binanceAdapter = new BinanceExchangeAdapter(objectMapper, httpClient);
-    	KrakenExchangeAdapter krakenAdapter = new KrakenExchangeAdapter(objectMapper, httpClient);
-    	SunSwapExchangeAdapter sunSwapAdapter = new SunSwapExchangeAdapter(objectMapper, httpClient);
+    	BinanceExchangeClient binanceAdapter = new BinanceExchangeClient(objectMapper, httpClient);
+    	KrakenExchangeClient krakenAdapter = new KrakenExchangeClient(objectMapper, httpClient);
+    	SunSwapExchangeClient sunSwapAdapter = new SunSwapExchangeClient(objectMapper, httpClient);
 
         
     	// Exemplo de pares
