@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.4'
+	id 'org.springframework.boot' version '3.4.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
@@ -22,6 +22,9 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven {
+        url  "https://dl.bintray.com/tronj/tronj"
+    }
 }
 
 ext {
@@ -36,7 +39,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'ch.obermuhlner:big-math:2.3.2'
-	compileOnly 'org.projectlombok:lombok'
+    implementation 'org.bitcoinj:bitcoinj-core:0.16.3' // versão estável sem dependência de Protobuf
+    implementation 'org.bouncycastle:bcprov-jdk15to18:1.76'
+    implementation 'io.github.binance:binance-connector-java:3.4.1'
+    implementation 'org.web3j:core:4.10.3'
+    compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'io.micrometer:micrometer-registry-new-relic'
 	runtimeOnly 'org.postgresql:postgresql'

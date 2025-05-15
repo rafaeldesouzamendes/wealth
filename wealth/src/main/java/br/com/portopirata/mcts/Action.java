@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import br.com.portopirata.wealth.portfolio.Asset;
 
-public class Action 
+public class Action //TODO refactory to remove wealth specific classes
 {
 	private long startTime;
 	private long maxDuration;
